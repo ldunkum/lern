@@ -60,6 +60,17 @@ a:hover{
     height: 4em;
 }
 
+.rotating-play-button{
+    animation-name: rotatePlayButton;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotatePlayButton{
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
 .footer {
     text-align: center;
     position: absolute;
