@@ -12,7 +12,7 @@ const startLearning = function(){
             success : function(results) {
                 $('#content').html(results);
                 $('head').append('<link rel="stylesheet" type="text/css" href="css/learning.css">');
-            }
+            }            
         });
     }
 };
