@@ -64,6 +64,7 @@ a:hover{
     animation-name: rotatePlayButton;
     animation-duration: 1s;
     animation-iteration-count: infinite;
+    transform-origin: center;
 }
 
 @keyframes rotatePlayButton{
