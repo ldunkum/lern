@@ -1,8 +1,8 @@
 let alreadyClickedOnce = false;
-const startLearning = function(){
+const goToLearning = function(){
     if(!alreadyClickedOnce){
         $('#play-button').addClass('rotating-play-button');
-        $('#start-learning-link').html('Yea');
+        $('#start-learning-link').html('Again');
         alreadyClickedOnce = true;
     }else{
         $.ajax({
@@ -15,4 +15,8 @@ const startLearning = function(){
             }            
         });
     }
+};
+
+const setLanguage = function(language){
+    alert(language);
 };
