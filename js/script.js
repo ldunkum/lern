@@ -1,4 +1,6 @@
+let language;
 let alreadyClickedOnce = false;
+
 const goToLearning = function(){
     if(!alreadyClickedOnce){
         $('#play-button').addClass('rotating-play-button');
@@ -24,10 +26,12 @@ const goToLearning = function(){
 };
 
 const setLanguage = function(language){
+    this.language = language;
+    url = "html/" + language + "/gameStart.html";
     $.ajax({
         context:this,
         dataType: "html",
-        url: "html/gameStart.html",
+        url: url,
         success : function(results) {
             $('#content').html(results);
             $('#heading').hide(350);
