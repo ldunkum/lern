@@ -43,6 +43,10 @@
     border: 3px solid white !important;
 }
 
+.dd-links:hover{
+    cursor: pointer;
+}
+
 .dropdownSelections{
     list-style: none;
 }

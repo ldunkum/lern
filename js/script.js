@@ -18,5 +18,18 @@ const goToLearning = function(){
 };
 
 const setLanguage = function(language){
-    alert(language);
+    $.ajax({
+        context:this,
+        dataType: "html",
+        url: "html/gameStart.html",
+        success : function(results) {
+            $('#content').html(results);
+            $('#heading').hide(250);
+            $('#footer').hide(250);
+            $('#content').animate({
+                height: "90%"
+            }, 750);
+            $('#root').css('margin-top', '1%');
+        }
+    });
 };
