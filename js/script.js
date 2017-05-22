@@ -5,6 +5,7 @@ $(document).ready(function(){
     $('#about-link').click(function () {
         showAbout();
     });
+    this.language = "en";
 });
 
 const goToLearning = function(){
@@ -51,6 +52,7 @@ const setLanguage = function(language){
 };
 
 const showAbout = function() {
+    if(this.language === undefined) this.language = "en";
     const url = "html/" + this.language + "/about.html";
     $.ajax({
         context:this,
@@ -60,7 +62,7 @@ const showAbout = function() {
             $('#content').html(results);
             $("#about").css({
                 "text-align" : "center",
-                "margin-top" : "10%"
+                "padding-top" : "10%"
             });
         }
     });
