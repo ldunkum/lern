@@ -5,13 +5,19 @@ const goToLearning = function(){
         $('#start-learning-link').html('Again');
         alreadyClickedOnce = true;
     }else{
+        $('#content').css('height', '1%');
+        //$('#content').css('width', '1%');
+        $('head').append('<link rel="stylesheet" type="text/css" href="css/learning.css">');
+        $('#content').animate({
+            //width: "auto",
+            height: "70%"
+        }, 750);
         $.ajax({
             context: this,
             dataType : "html",
             url : "html/learning.html",
             success : function(results) {
                 $('#content').html(results);
-                $('head').append('<link rel="stylesheet" type="text/css" href="css/learning.css">');
             }            
         });
     }
@@ -24,8 +30,8 @@ const setLanguage = function(language){
         url: "html/gameStart.html",
         success : function(results) {
             $('#content').html(results);
-            $('#heading').hide(250);
-            $('#footer').hide(250);
+            $('#heading').hide(350);
+            $('#footer').hide(350);
             $('#content').animate({
                 height: "90%"
             }, 750);
@@ -33,3 +39,7 @@ const setLanguage = function(language){
         }
     });
 };
+
+
+
+//inforestudante teacher mail for questions

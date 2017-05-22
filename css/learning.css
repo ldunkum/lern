@@ -16,7 +16,7 @@
 
 .learning-button{
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
     margin-top: 10%;
     padding: 15px;
@@ -38,9 +38,21 @@
     border: 3px solid white !important;
 }
 
+.btn-group {
+    margin-top:10%;
+}
+
+.open>a:hover {
+    font-style: normal;
+}
+
 .open>.dropdown-toggle.btn-primary {
     background-color: transparent !important;
     border: 3px solid white !important;
+}
+
+.dropdown-menu{
+    width: 100%
 }
 
 .dd-links:hover{
@@ -49,4 +61,15 @@
 
 .dropdownSelections{
     list-style: none;
+    padding-left: 10%;
+    margin-bottom: 0;
+}
+
+.dd-links{
+    font-size:1.25em;
+}
+
+.dd-links:hover{
+    text-decoration: underline;
+    font-style: italic;
 }
