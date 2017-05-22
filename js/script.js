@@ -1,5 +1,11 @@
-let language;
+let language = "en";
 let alreadyClickedOnce = false;
+
+$(document).ready(function(){
+    $('#about-link').click(function () {
+        showAbout();
+    });
+});
 
 const goToLearning = function(){
     if(!alreadyClickedOnce){
@@ -27,7 +33,7 @@ const goToLearning = function(){
 
 const setLanguage = function(language){
     this.language = language;
-    url = "html/" + language + "/gameStart.html";
+    const url = "html/" + language + "/gameStart.html";
     $.ajax({
         context:this,
         dataType: "html",
@@ -40,6 +46,22 @@ const setLanguage = function(language){
                 height: "90%"
             }, 750);
             $('#root').css('margin-top', '1%');
+        }
+    });
+};
+
+const showAbout = function() {
+    const url = "html/" + this.language + "/about.html";
+    $.ajax({
+        context:this,
+        dataType: "html",
+        url: url,
+        success: function(results) {
+            $('#content').html(results);
+            $("#about").css({
+                "text-align" : "center",
+                "margin-top" : "10%"
+            });
         }
     });
 };

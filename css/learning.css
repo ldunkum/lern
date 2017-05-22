@@ -73,3 +73,7 @@
     text-decoration: underline;
     font-style: italic;
 }
+
+#about{
+    margin-top: 0 !important;
+}
