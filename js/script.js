@@ -19,7 +19,8 @@ const goToLearning = function(){
         $('head').append('<link rel="stylesheet" type="text/css" href="css/learning.css">');
         $('#content').animate({
             //width: "auto",
-            height: "70%"
+            height: "70%",
+            "border-radius":"2px",
         }, 750);
         $.ajax({
             context: this,
@@ -44,7 +45,7 @@ const setLanguage = function(language){
             $('#heading').hide(350);
             $('#footer').hide(350);
             $('#content').animate({
-                height: "90%"
+                height: "90%",
             }, 750);
             $('#root').css('margin-top', '1%');
         }
