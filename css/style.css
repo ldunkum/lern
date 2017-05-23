@@ -64,14 +64,14 @@ a:hover, .navigation-links:hover{
     max-width: 150px;
     width: 4em;
     height: 4em;
-    margin-left: 0.75em;
+    margin-left: 1.75em;
 }
 
 .rotating-play-button{
     animation-name: rotatePlayButton;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    transform-origin: center;
+    transform-origin: 25% 50%;
 }
 
 @keyframes rotatePlayButton{

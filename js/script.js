@@ -42,11 +42,16 @@ const setLanguage = function(language){
         url: url,
         success : function(results) {
             $('#content').html(results);
+            $('#content').children().hide();
             $('#heading').hide(350);
             $('#footer').hide(350);
             $('#content').animate({
-                height: "90%"
-            }, 750);
+                height: "90%",
+                padding: "5%"
+            }, 500, function(){
+                //evaluate if hide+show is appropriate or too much, if so, change animation duration to 750 and remove the hide+show
+                $('#content').children().show(300);
+            });
             $('#root').css('margin-top', '1%');
         }
     });
