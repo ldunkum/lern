@@ -2,6 +2,7 @@ let language = "en";
 let alreadyClickedOnce = false;
 let score = 0;
 let currentQuestion = 1;
+const numberOfQuestions = 5;
 
 $(document).ready(function(){
     $('#about-link').click(function () {
@@ -65,7 +66,13 @@ const setLanguage = function(language){
 const changeQuestion = function () {
     //console.log("in changequestion nr:" + currentQuestion);
     //console.log("Language in changeQuestion: " + this.language);
-    const questionUrl = "html/" + this.language + "/question" + currentQuestion + ".html";
+    let questionUrl = "";
+    if(currentQuestion <= numberOfQuestions)
+        questionUrl = "html/" + this.language + "/question" + currentQuestion + ".html";
+    else{
+        goToGameEndScreen();
+        return;
+    }
     currentQuestion++;
     $.ajax({
         context:this,
@@ -151,11 +158,29 @@ const evaluateAnswer = function() {
 };
 
 const stuff = function() {
-    alert("asdoh");
+    //alert("asdoh");
     $('#confirm-button').removeClass('correct-response');
     console.log("why doesn't it execute?");
     changeQuestion();
 }
+
+const goToGameEndScreen = function() {
+    const url = "html/" + this.language + "/gameEndScreen.html";
+    $.ajax({
+        context:this,
+        dataType: "html",
+        url: url,
+        success: function(results) {
+            $('#content').html(results);
+            $('#content > *').hide();
+            if(score > 0)
+                $('#game-end-message').html("Congratulations, you finished the game with " + score + " out of " + numberOfQuestions*10 + " possible points.");
+            else
+                $('#game-end-message').html("C'mon, were you even trying? It's not that hard..");
+            $('#content > *').fadeIn(500);
+        }
+    });
+};
 
 
 //inforestudante teacher mail for questions
