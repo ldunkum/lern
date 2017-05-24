@@ -6,7 +6,6 @@ $(document).ready(function(){
         showAbout();
     });
     this.language = "en";
-    checkboxStuff();
 });
 
 const goToLearning = function(){
@@ -45,13 +44,13 @@ const setLanguage = function(language){
         success : function(results) {
             $('#content').html(results);
             $('#answersFieldset').html
-
             $.ajax({
                 context:this,
                 dataType: "html",
                 url: questionUrl,
                 success: function(response) {
                     $('#answersFieldset').html(response);
+                    checkboxStuff(); //initialise behaviour of input radio buttons
                 }
             });
 
@@ -93,8 +92,8 @@ const checkboxStuff = function () {
     var booRadio;
     var x = 0;
     for(x = 0; x < allRadios.length; x++){
-        alert( $('input[name=question1]:checked').val());
         allRadios[x].onclick = function(){
+        alert( $('input[name=question1]:checked').val());
             if(booRadio == this){
                 this.checked = false;
                 booRadio = null;
