@@ -1,5 +1,7 @@
 let language = "en";
 let alreadyClickedOnce = false;
+let score = 0;
+let currentQuestion = 1;
 
 $(document).ready(function(){
     $('#about-link').click(function () {
@@ -36,20 +38,20 @@ const goToLearning = function(){
 const setLanguage = function(language){
     this.language = language;
     const gameUrl = "html/" + language + "/gameStart.html";
-    const questionUrl = "html/" + language + "/question1.html";
+    const questionUrl = "html/" + language + "/question" + currentQuestion + ".html";
+    currentQuestion++;
     $.ajax({
         context:this,
         dataType: "html",
         url: gameUrl,
         success : function(results) {
             $('#content').html(results);
-            $('#answersFieldset').html
             $.ajax({
                 context:this,
                 dataType: "html",
                 url: questionUrl,
                 success: function(response) {
-                    $('#answersFieldset').html(response);
+                    $('#game').html(response);
                     checkboxStuff(); //initialise behaviour of input radio buttons
                 }
             });
@@ -67,6 +69,8 @@ const setLanguage = function(language){
             $('#root').css('margin-top', '1%');
         }
     });
+    $('head').append('<link rel="stylesheet" type="text/css" href="css/questions.css">');
+
 };
 
 const showAbout = function() {
@@ -93,7 +97,7 @@ const checkboxStuff = function () {
     var x = 0;
     for(x = 0; x < allRadios.length; x++){
         allRadios[x].onclick = function(){
-        alert( $('input[name=question1]:checked').val());
+        //alert( $('input[name=question1]:checked').val());
             if(booRadio == this){
                 this.checked = false;
                 booRadio = null;
@@ -103,6 +107,41 @@ const checkboxStuff = function () {
         };
     }
 }
+
+const evaluateAnswer = function() {
+    //alert('Answer is correct: ' + $('#answers-fieldset > input:checked').val());
+    switch($('#answers-fieldset > input:checked').val()){
+        case 'yes':
+            score += 10;
+            /*$('#confirm-button').animate({
+                "-webkit-box-shadow" : "0px 0px 20px 5px rgba(53,222,98,1)",
+                "-moz-box-shadow" : "0px 0px 20px 5px rgba(53,222,98,1)",
+                "box-shadow" : "0px 0px 20px 5px rgba(53,222,98,1)"
+            }, 500);*/
+            
+            $('#confirm-button').addClass('correct-response');
+            $('#confirm-button').on('cssanimationend', function() {
+                $('#confirm-button').removeClass('correct-response');
+            });
+            //loadNextQuestion();
+            break;
+        case 'no':
+            // $('#confirm-button').animate({
+            //     "-webkit-box-shadow" : "0px 0px 20px 5px rgba(224,49,49,1)",
+            //     "-moz-box-shadow" : "0px 0px 20px 5px rgba(224,49,49,1)",
+            //     "box-shadow" : "0px 0px 20px 5px rgba(224,49,49,1)"
+            // }, 500);
+            $('#confirm-button').addClass('incorrect-response');
+            $('#confirm-button').on('cssanimationend', function() {
+                $('#confirm-button').removeClass('incorrect-response');
+            });
+            //loadNextQuestion();
+            break;
+        default:
+            console.log("No answer selected")
+            break;
+    }
+};
 
 
 

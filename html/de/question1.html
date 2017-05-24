@@ -1,6 +1,21 @@
-<legend>Welches Land wird von mehr Touristen besucht?</legend>
-<input type="radio" name="question1" id="question1a" value="no">
-<label for="question1a">Portugal</label>
-<br>
-<input type="radio" name="question1" id="question1b" value="yes">
-<label for="question1b">Deutschland</label>
+<div id="qAndA" class="qAndA">
+        <p id="question-text">Welches Land wird von mehr Touristen besucht?</p>
+   </div>
+   <div class="animation-and-answers">
+        <div class="animation">
+            <span style="font-size:3em">TEST</span>
+        </div>
+        <div class="answer-input">
+            <form>
+                <fieldset id="answers-fieldset" data-role="answers">          
+                    <!--<legend>Which country receives more tourists?</legend>-->
+                    <input type="radio" name="question1" id="question1a" value="no">
+                    <label for="question1a">Portugal</label>
+                    <br>
+                    <input type="radio" name="question1" id="question1b" value="yes">
+                    <label for="question1b">Deutschland</label>
+                </fieldset>
+            </form>
+            <button type="" onclick="evaluateAnswer()">Bestätigen</button>    
+        </div> 
+   </div>
