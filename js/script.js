@@ -173,10 +173,16 @@ const goToGameEndScreen = function() {
         success: function(results) {
             $('#content').html(results);
             $('#content > *').hide();
-            if(score > 0)
-                $('#game-end-message').html("Congratulations, you finished the game with " + score + " out of " + numberOfQuestions*10 + " possible points.");
-            else
+            if(score > 0){
+                if(this.language === 'en')
+                    $('#game-end-message').html("Congratulations, you finished the game with " + score + " out of " + numberOfQuestions*10 + " possible points.");
+                if(this.language === 'de')
+                    $('#game-end-message').html("Herzlichen Glückwunsch, du hast das Spiel mit " + score + " von " + numberOfQuestions*10 + " möglichen Punkten abgeschlossen.");
+                if(this.language === 'pt')
+                    $('#game-end-message').html("Congratulations, you finished the game with " + score + " out of " + numberOfQuestions*10 + " possible points.");
+            }else{
                 $('#game-end-message').html("C'mon, were you even trying? It's not that hard..");
+            }
             $('#content > *').fadeIn(500);
         }
     });
