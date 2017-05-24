@@ -37,25 +37,15 @@ const goToLearning = function(){
 
 const setLanguage = function(language){
     this.language = language;
+    console.log("Language in setLanguage: " + language);
     const gameUrl = "html/" + language + "/gameStart.html";
-    const questionUrl = "html/" + language + "/question" + currentQuestion + ".html";
-    currentQuestion++;
     $.ajax({
         context:this,
         dataType: "html",
         url: gameUrl,
         success : function(results) {
             $('#content').html(results);
-            $.ajax({
-                context:this,
-                dataType: "html",
-                url: questionUrl,
-                success: function(response) {
-                    $('#game').html(response);
-                    checkboxStuff(); //initialise behaviour of input radio buttons
-                }
-            });
-
+            changeQuestion();
             $('#content').children().hide();
             $('#heading').hide(350);
             $('#footer').hide(350);
@@ -70,7 +60,22 @@ const setLanguage = function(language){
         }
     });
     $('head').append('<link rel="stylesheet" type="text/css" href="css/questions.css">');
+};
 
+const changeQuestion = function () {
+    console.log("in changequestion nr:" + currentQuestion);
+    console.log("Language in changeQuestion: " + this.language);
+    const questionUrl = "html/" + this.language + "/question" + currentQuestion + ".html";
+    currentQuestion++;
+    $.ajax({
+        context:this,
+        dataType: "html",
+        url: questionUrl,
+        success: function(response) {
+            $('#game').html(response);
+            checkboxStuff(); //initialise behaviour of input radio buttons
+        }
+    });
 };
 
 const showAbout = function() {
@@ -112,30 +117,21 @@ const evaluateAnswer = function() {
     //alert('Answer is correct: ' + $('#answers-fieldset > input:checked').val());
     switch($('#answers-fieldset > input:checked').val()){
         case 'yes':
-            score += 10;
-            /*$('#confirm-button').animate({
-                "-webkit-box-shadow" : "0px 0px 20px 5px rgba(53,222,98,1)",
-                "-moz-box-shadow" : "0px 0px 20px 5px rgba(53,222,98,1)",
-                "box-shadow" : "0px 0px 20px 5px rgba(53,222,98,1)"
-            }, 500);*/
-            
+            score += 10;            
             $('#confirm-button').addClass('correct-response');
+            $('#confirm-button').html("Correct");
             $('#confirm-button').on('cssanimationend', function() {
                 $('#confirm-button').removeClass('correct-response');
             });
-            //loadNextQuestion();
+            changeQuestion();
             break;
         case 'no':
-            // $('#confirm-button').animate({
-            //     "-webkit-box-shadow" : "0px 0px 20px 5px rgba(224,49,49,1)",
-            //     "-moz-box-shadow" : "0px 0px 20px 5px rgba(224,49,49,1)",
-            //     "box-shadow" : "0px 0px 20px 5px rgba(224,49,49,1)"
-            // }, 500);
             $('#confirm-button').addClass('incorrect-response');
+            $('#confirm-button').html("Incorrect");
             $('#confirm-button').on('cssanimationend', function() {
                 $('#confirm-button').removeClass('incorrect-response');
             });
-            //loadNextQuestion();
+            changeQuestion();
             break;
         default:
             console.log("No answer selected")
