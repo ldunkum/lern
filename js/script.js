@@ -39,6 +39,7 @@ const setLanguage = function(language){
     this.language = language;
     console.log("Language in setLanguage: " + language);
     const gameUrl = "html/" + language + "/gameStart.html";
+    $('head').append('<link rel="stylesheet" type="text/css" href="css/questions.css">');
     $.ajax({
         context:this,
         dataType: "html",
@@ -59,12 +60,11 @@ const setLanguage = function(language){
             $('#root').css('margin-top', '1%');
         }
     });
-    $('head').append('<link rel="stylesheet" type="text/css" href="css/questions.css">');
 };
 
 const changeQuestion = function () {
-    console.log("in changequestion nr:" + currentQuestion);
-    console.log("Language in changeQuestion: " + this.language);
+    //console.log("in changequestion nr:" + currentQuestion);
+    //console.log("Language in changeQuestion: " + this.language);
     const questionUrl = "html/" + this.language + "/question" + currentQuestion + ".html";
     currentQuestion++;
     $.ajax({
@@ -72,7 +72,13 @@ const changeQuestion = function () {
         dataType: "html",
         url: questionUrl,
         success: function(response) {
-            $('#game').html(response);
+            if(currentQuestion === 1){
+                $('#game').html(response);
+            }else{
+                $('#game').fadeOut(350);
+                $('#game').html(response)
+                $('#game').fadeIn(350);
+            }
             checkboxStuff(); //initialise behaviour of input radio buttons
         }
     });
@@ -114,22 +120,25 @@ const checkboxStuff = function () {
 }
 
 const evaluateAnswer = function() {
+    let animationIsFinished = false;
     //alert('Answer is correct: ' + $('#answers-fieldset > input:checked').val());
     switch($('#answers-fieldset > input:checked').val()){
         case 'yes':
             score += 10;            
-            $('#confirm-button').addClass('correct-response');
+            console.log("score: " + score);
             $('#confirm-button').html("Correct");
+            $('#confirm-button').addClass('correct-response');
             $('#confirm-button').on('cssanimationend', function() {
-                $('#confirm-button').removeClass('correct-response');
+                //stuff();
             });
             changeQuestion();
             break;
         case 'no':
-            $('#confirm-button').addClass('incorrect-response');
             $('#confirm-button').html("Incorrect");
+            $('#confirm-button').addClass('incorrect-response');
             $('#confirm-button').on('cssanimationend', function() {
                 $('#confirm-button').removeClass('incorrect-response');
+                //changeQuestion();
             });
             changeQuestion();
             break;
@@ -137,9 +146,16 @@ const evaluateAnswer = function() {
             console.log("No answer selected")
             break;
     }
+    //$.when(animationIsFinished).then(changeQuestion());
+    //changeQuestion();
 };
 
-
+const stuff = function() {
+    alert("asdoh");
+    $('#confirm-button').removeClass('correct-response');
+    console.log("why doesn't it execute?");
+    changeQuestion();
+}
 
 
 //inforestudante teacher mail for questions
