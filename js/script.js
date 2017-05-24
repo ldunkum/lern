@@ -6,6 +6,7 @@ $(document).ready(function(){
         showAbout();
     });
     this.language = "en";
+    checkboxStuff();
 });
 
 const goToLearning = function(){
@@ -35,13 +36,25 @@ const goToLearning = function(){
 
 const setLanguage = function(language){
     this.language = language;
-    const url = "html/" + language + "/gameStart.html";
+    const gameUrl = "html/" + language + "/gameStart.html";
+    const questionUrl = "html/" + language + "/question1.html";
     $.ajax({
         context:this,
         dataType: "html",
-        url: url,
+        url: gameUrl,
         success : function(results) {
             $('#content').html(results);
+            $('#answersFieldset').html
+
+            $.ajax({
+                context:this,
+                dataType: "html",
+                url: questionUrl,
+                success: function(response) {
+                    $('#answersFieldset').html(response);
+                }
+            });
+
             $('#content').children().hide();
             $('#heading').hide(350);
             $('#footer').hide(350);
@@ -73,6 +86,25 @@ const showAbout = function() {
         }
     });
 };
+
+
+const checkboxStuff = function () {
+    const allRadios = document.getElementsByName('question1');
+    var booRadio;
+    var x = 0;
+    for(x = 0; x < allRadios.length; x++){
+        alert( $('input[name=question1]:checked').val());
+        allRadios[x].onclick = function(){
+            if(booRadio == this){
+                this.checked = false;
+                booRadio = null;
+            }else{
+            booRadio = this;
+        }
+        };
+    }
+}
+
 
 
 
