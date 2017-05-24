@@ -2,12 +2,12 @@
     height: 100%;
     padding: 10px 25px;
     background: white;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 }
 
 .animation-and-answers{
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     height: 100%;
     padding: 1% 0 5% 0;
 }
