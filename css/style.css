@@ -10,14 +10,14 @@
 
 .title-headline{
     margin-bottom: 0;
-    font-size: 4em;
+    font-size: 3.5em;
     text-align: center;
     vertical-align: middle;
     line-height: 90px;   
 }
 
 .headline {
-    font-family: 'Roboto Slab', monospace, sans-serif;
+    font-family: 'Work Sans', monospace, sans-serif;
 }
 
 nav > *:nth-child(1){
@@ -33,6 +33,7 @@ a, .navigation-links{
 a:hover, .navigation-links:hover{
     font-style: italic;
     cursor: pointer;
+    color: black;
 }
 
 .main-body, .footer {

@@ -25,6 +25,22 @@
     text-align: left;
 }
 
+.answer-input > *{
+    margin-bottom: 10px;
+}
+
+#confirm-button{
+    background: linear-gradient(45deg, rgba(255,0,102,0.62) 0%,rgba(41,137,216,0.65) 57%,rgba(16,239,39,0.67) 100%);
+    padding: 5%;
+    border:none;
+    color: white;
+    font-size: 1.25em;
+    /*border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(45deg, rgba(255,0,102,0.62) 0%,rgba(41,137,216,0.65) 57%,rgba(16,239,39,0.67) 100%);
+    border-image-slice: 1;*/
+}
+
 .question-text{
     font-size: 1.25em;
     text-align: left;
@@ -63,4 +79,18 @@
     animation-duration: 0.5s;
     animation-iteration-count: 3;
     animation-timing-function: linear;
+}
+
+.illustration{
+    display: flex;
+    flex-flow: column;
+}
+
+#droppable1 {
+    width: 100%;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(45deg, rgba(255,0,102,0.62) 0%,rgba(41,137,216,0.65) 57%,rgba(16,239,39,0.67) 100%);
+    border-image-slice: 1;
+    flex: 1 1 auto;
 }

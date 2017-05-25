@@ -1,21 +1,23 @@
-<div id="qAndA" class="qAndA">
-        <p id="question-text" class="question-text">Which country receives more tourists?</p>
-   </div>
-   <div class="animation-and-answers">
-        <div class="animation">
-            <span style="font-size:3em">TEST</span>
+    <div class="animation-and-answers">
+        <div class="illustration">
+            <div class="illustrationElements">
+                <span style="font-size:3em;">Which country receives more tourists? </span><span>(drop the right flag below the question)</span>
+            </div>
+            <div id="droppable1"></div>
         </div>
         <div class="answer-input">
-            <form>
-                <fieldset id="answers-fieldset" data-role="answers">          
-                    <!--<legend>Which country receives more tourists?</legend>-->
-                    <input type="radio" name="question1" id="question1a" value="no">
-                    <label for="question1a">Portugal</label>
-                    <br>
-                    <input type="radio" name="question1" id="question1b" value="yes">
-                    <label for="question1b">Germany</label>
-                </fieldset>
-            </form>
+            <div class="draggable">
+                <img id="correct" alt="./../../resources/img/Flag_of_Germany.svg" width="100" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png">
+            </div>
+            <div class="draggable">
+                <img id="incorrect" alt="./../../resources/img/Flag_of_Portugal.svg" width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1200px-Flag_of_Portugal.svg.png">
+            </div>
             <button id="confirm-button" type="" onclick="evaluateAnswer()">Confirm</button>    
         </div> 
    </div>
+
+<!--
+<p><a href="https://en.wikipedia.org/wiki/File:Flag_of_Germany.svg#/media/File:Flag_of_Germany.svg"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="Flag of Germany.svg"></a>
+
+<p><a href="https://commons.wikimedia.org/wiki/File:Flag_of_Portugal.svg#/media/File:Flag_of_Portugal.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1200px-Flag_of_Portugal.svg.png" alt="Flag of Portugal"></a>
+-->

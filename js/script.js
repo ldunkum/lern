@@ -2,6 +2,7 @@ let language = "en";
 let alreadyClickedOnce = false;
 let score = 0;
 let currentQuestion = 1;
+let dropCorrectAnswer;
 const numberOfQuestions = 5;
 
 $(document).ready(function(){
@@ -130,7 +131,7 @@ const checkboxStuff = function () {
 const evaluateAnswer = function() {
     let animationIsFinished = false;
     //alert('Answer is correct: ' + $('#answers-fieldset > input:checked').val());
-    switch($('#answers-fieldset > input:checked').val()){
+    /*switch($('#answers-fieldset > input:checked').val()){
         case 'yes':
             score += 10;            
             console.log("score: " + score);
@@ -153,9 +154,18 @@ const evaluateAnswer = function() {
         default:
             console.log("No answer selected")
             break;
-    }
+    }*/
     //$.when(animationIsFinished).then(changeQuestion());
     //changeQuestion();
+
+    if(dropCorrectAnswer){
+        score += 10;
+        changeQuestion();
+    }else if(!dropCorrectAnswer)
+        changeQuestion();
+    else
+        console.log("no answer selected");
+
 };
 
 const stuff = function() {
@@ -193,32 +203,22 @@ const goToGameEndScreen = function() {
 const draggabletings = function() {
     $('#droppable1').droppable({
         drop: function(event, ui) {
-            var draggable = ui.draggable;
-            var dragged = draggable.clone();
-            var currentID = ui.draggable.find('label').attr('id');
+            const draggable = ui.draggable;
+            //const dragged = draggable.clone();
+            const currentID = ui.draggable.find('img').attr('id');
             console.log(currentID);
-            dragged.appendTo("#droppable1")
-        }
-    });
-    $('#droppable2').droppable({
-        drop: function(event, ui) {
-            var draggable = ui.draggable;
-            var dragged = draggable.clone();
-            var currentID = ui.draggable.find('label').attr('id');
-            console.log(currentID);
-            dragged.appendTo("#droppable2")
+            if(currentID === "correct")
+                dropCorrectAnswer = true;
+            else if(currentID === "incorrect")
+                dropCorrectAnswer = false
+            else
+                alert("There was an error evaluating the answer, please reload the site");
+            //dragged.appendTo("#droppable1")
         }
     });
 
-    $('#draggable-container').draggable({
+    $('.draggable').draggable({
         revert: "invalid"
-    });
-    $('#draggable-container2').draggable({
-        revert: "invalid"
-    });
-    $('#confirm-button').draggable({
-        revert: "invalid",
-        helper: "clone"
     });
 };
 
