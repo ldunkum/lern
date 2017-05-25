@@ -83,6 +83,7 @@
 }
 
 .illustration{
+    min-width: 75%;
     display: flex;
     flex-flow: column;
 }

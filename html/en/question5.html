@@ -1,16 +1,19 @@
     <div class="animation-and-answers">
         <div class="illustration">
             <div class="illustrationElements">
-                <span style="font-size:3em;">Which country receives more tourists? </span><span>(drop the right flag below the question)</span>
+                <span class="question-text">Where will you have more difficulties finding a vegetarian restaurant?</span><span>(drop the right flag below the question)</span>
             </div>
             <div id="droppable1"></div>
         </div>
         <div class="answer-input">
-            <div class="draggable">
-                <img id="correct" alt="./../../resources/img/Flag_of_Germany.svg" width="100" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png">
+            <div class="illustrationElements">
+                <span class="question-text" style="visibility:hidden">Which </span>
             </div>
             <div class="draggable">
-                <img id="incorrect" alt="./../../resources/img/Flag_of_Portugal.svg" width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1200px-Flag_of_Portugal.svg.png">
+                <img id="incorrect" alt="./../../resources/img/Flag_of_Germany.svg" width="100" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png">
+            </div>
+            <div class="draggable">
+                <img id="correct" alt="./../../resources/img/Flag_of_Portugal.svg" width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1200px-Flag_of_Portugal.svg.png">
             </div>
             <button id="confirm-button" type="" onclick="evaluateAnswer()">Confirm</button>    
         </div> 
