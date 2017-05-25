@@ -87,6 +87,7 @@ const changeQuestion = function () {
                 $('#game').fadeIn(350);
             }
             checkboxStuff(); //initialise behaviour of input radio buttons
+            draggabletings();
         }
     });
 };
@@ -188,5 +189,37 @@ const goToGameEndScreen = function() {
     });
 };
 
+
+const draggabletings = function() {
+    $('#droppable1').droppable({
+        drop: function(event, ui) {
+            var draggable = ui.draggable;
+            var dragged = draggable.clone();
+            var currentID = ui.draggable.find('label').attr('id');
+            console.log(currentID);
+            dragged.appendTo("#droppable1")
+        }
+    });
+    $('#droppable2').droppable({
+        drop: function(event, ui) {
+            var draggable = ui.draggable;
+            var dragged = draggable.clone();
+            var currentID = ui.draggable.find('label').attr('id');
+            console.log(currentID);
+            dragged.appendTo("#droppable2")
+        }
+    });
+
+    $('#draggable-container').draggable({
+        revert: "invalid"
+    });
+    $('#draggable-container2').draggable({
+        revert: "invalid"
+    });
+    $('#confirm-button').draggable({
+        revert: "invalid",
+        helper: "clone"
+    });
+};
 
 //inforestudante teacher mail for questions
