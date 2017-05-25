@@ -96,3 +96,12 @@
     border-image-slice: 1;
     flex: 1 1 auto;
 }
+
+@media (max-width: 600px) {
+  .animation-and-answers{
+      flex-flow: column;
+  }
+  .illustration{
+      min-height: 50%;
+  }
+}
