@@ -213,12 +213,55 @@ const draggabletings = function() {
                 dropCorrectAnswer = false
             else
                 alert("There was an error evaluating the answer, please reload the site");
+
+            const draggables = document.getElementsByClassName('draggable');
+            
+            for(let i = 0; i < draggables.length; i++){
+                console.log(draggables[i].childNodes[1].id);
+                console.log(i);
+                if(currentID !== draggables[i].childNodes[1].id){
+                    draggables[i].childNodes[1].originalPosition = {
+                        top : 0,
+                        left : 0
+                    };
+                }
+            }
             //dragged.appendTo("#droppable1")
         }
     });
 
     $('.draggable').draggable({
         revert: "invalid"
+    });
+
+
+    /* https://stackoverflow.com/questions/23504884/only-allow-one-object-to-be-dropped-jquery */
+    $( ".draggable" ).draggable({
+        //connectToSortable: "#droppable1",
+        helper: "clone",
+        revert: "invalid"
+    });
+    $("#droppable1").droppable({
+        accept: '.draggable',
+        drop: function (event, ui) {
+            const currentID = ui.draggable.find('img').attr('id');
+            console.log(currentID);
+            if(currentID === "correct")
+                dropCorrectAnswer = true;
+            else if(currentID === "incorrect")
+                dropCorrectAnswer = false
+            else
+                alert("There was an error evaluating the answer, please reload the site");
+                
+            var $this = $(this),
+                maxItemsCount = 1;
+            if ($this.children('div').length == maxItemsCount ){
+                //more than one item,just replace
+                $(this).html($(ui.draggable).clone());
+            } else {
+                $(this).append($(ui.draggable).clone());
+            }
+        }
     });
 };
 
