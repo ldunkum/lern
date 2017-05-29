@@ -2,7 +2,7 @@ let language = "en";
 let alreadyClickedOnce = true;
 let score = 0;
 let currentQuestion = 1;
-let dropCorrectAnswer;
+let dropCorrectAnswer = -1; //-1: no answer given, 0:wrong answer, 1:correct answer
 const numberOfQuestions = 5;
 
 $(document).ready(function(){
@@ -159,10 +159,10 @@ const evaluateAnswer = function() {
     //$.when(animationIsFinished).then(changeQuestion());
     //changeQuestion();
 
-    if(dropCorrectAnswer){
+    if(dropCorrectAnswer === 1){
         score += 10;
         changeQuestion();
-    }else if(!dropCorrectAnswer)
+    }else if(dropCorrectAnswer === 0)
         changeQuestion();
     else
         console.log("no answer selected");
@@ -248,9 +248,9 @@ const draggabletings = function() {
             const currentID = ui.draggable.find('img').attr('id');
             console.log(currentID);
             if(currentID === "correct")
-                dropCorrectAnswer = true;
+                dropCorrectAnswer = 1;
             else if(currentID === "incorrect")
-                dropCorrectAnswer = false
+                dropCorrectAnswer = 0;
             else
                 alert("There was an error evaluating the answer, please reload the site");
                 
