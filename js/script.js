@@ -1,5 +1,5 @@
 let language = "en";
-let alreadyClickedOnce = false;
+let alreadyClickedOnce = true;
 let score = 0;
 let currentQuestion = 1;
 let dropCorrectAnswer;
@@ -83,9 +83,8 @@ const changeQuestion = function () {
             if(currentQuestion === 1){
                 $('#game').html(response);
             }else{
-                $('#game').fadeOut(350);
-                $('#game').html(response)
-                $('#game').fadeIn(350);
+                $('#game').fadeOut(150).delay(200).html(response);
+                $('#game').fadeIn(400);
             }
             checkboxStuff(); //initialise behaviour of input radio buttons
             draggabletings();
@@ -201,7 +200,7 @@ const goToGameEndScreen = function() {
 
 
 const draggabletings = function() {
-    $('#droppable1').droppable({
+    /*$('#droppable1').droppable({
         drop: function(event, ui) {
             const draggable = ui.draggable;
             //const dragged = draggable.clone();
@@ -232,9 +231,9 @@ const draggabletings = function() {
 
     $('.draggable').draggable({
         revert: "invalid"
-    });
+    });*/
 
-
+    /* solution to only allow one element at a time in the box */
     /* https://stackoverflow.com/questions/23504884/only-allow-one-object-to-be-dropped-jquery */
     $( ".draggable" ).draggable({
         //connectToSortable: "#droppable1",
