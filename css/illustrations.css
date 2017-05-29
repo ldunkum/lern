@@ -1,0 +1,30 @@
+.question1, .question2, .question3, .question4, .question5 {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.question1 {
+    background-image: url("../resources/img/1.jpg");
+    background-color: #9b9b4f;
+}
+
+.question2{
+    background-image: url("../resources/img/2.jpg");
+    background-color: #2D90A0;
+}
+
+.question3{
+    background-image: url("../resources/img/3.jpg");
+    background-color: #C48C8C;
+}
+
+.question4{
+    background-image: url("../resources/img/4.jpg");
+    background-color: #7B509B;
+}
+
+.question5{
+    background-image: url("../resources/img/5.jpg");
+    background-color: #D33839;
+}

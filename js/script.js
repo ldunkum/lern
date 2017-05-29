@@ -68,9 +68,9 @@ const changeQuestion = function () {
     //console.log("in changequestion nr:" + currentQuestion);
     //console.log("Language in changeQuestion: " + this.language);
     let questionUrl = "";
-    if(currentQuestion <= numberOfQuestions)
+    if(currentQuestion <= numberOfQuestions){
         questionUrl = "html/" + this.language + "/question" + currentQuestion + ".html";
-    else{
+    } else {
         goToGameEndScreen();
         return;
     }
@@ -83,11 +83,13 @@ const changeQuestion = function () {
             if(currentQuestion === 1){
                 $('#game').html(response);
             }else{
-                $('#game').fadeOut(150).delay(200).html(response);
-                $('#game').fadeIn(400);
+               /* $('#game').delay(500).fadeOut(150).html(response);
+                $('#game').fadeIn(400);*/
+                $('#game').html(response);
             }
             checkboxStuff(); //initialise behaviour of input radio buttons
             draggabletings();
+            setIllustration();
         }
     });
 };
@@ -264,4 +266,10 @@ const draggabletings = function() {
     });
 };
 
-//inforestudante teacher mail for questions
+const setIllustration = function() {
+    console.log("in setIllustraiont");
+    $('#droppable1').removeClass();
+    $('#droppable1').addClass('ui-droppable question' + (currentQuestion - 1));
+    $('head').append('<link rel="stylesheet" type="text/css" href="css/illustrations.css">')
+
+};
