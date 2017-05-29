@@ -165,7 +165,7 @@ const evaluateAnswer = function() {
     }else if(dropCorrectAnswer === 0)
         changeQuestion();
     else
-        console.log("no answer selected");
+        alert("Please drag one of the flags onto the illustration");
 
 };
 
