@@ -105,3 +105,9 @@
       min-height: 50%;
   }
 }
+
+#game-end-message{
+    color: white;
+    font-size: 2.5em;
+    
+}
