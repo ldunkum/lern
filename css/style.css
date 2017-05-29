@@ -55,11 +55,11 @@ a:hover, .navigation-links:hover{
     text-decoration: none;
 }
 
-.start-learning a{
+/*.start-learning a{
     color: darkgray;
     font-size: 0.8em;
 }
-
+*/
 #play-button{
     max-height: 150px;
     max-width: 150px;
@@ -71,7 +71,7 @@ a:hover, .navigation-links:hover{
 .rotating-play-button{
     animation-name: rotatePlayButton;
     animation-duration: 1s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     transform-origin: 25% 50%;
 }
 
