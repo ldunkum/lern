@@ -247,13 +247,7 @@ const draggabletings = function() {
         drop: function (event, ui) {
             const currentID = ui.draggable.find('img').attr('id');
             console.log(currentID);
-            if(currentID === "correct")
-                dropCorrectAnswer = 1;
-            else if(currentID === "incorrect")
-                dropCorrectAnswer = 0;
-            else
-                alert("There was an error evaluating the answer, please reload the site");
-                
+            
             var $this = $(this),
                 maxItemsCount = 1;
             if ($this.children('div').length == maxItemsCount ){
@@ -262,6 +256,18 @@ const draggabletings = function() {
             } else {
                 $(this).append($(ui.draggable).clone());
             }
+
+            if(currentID === "correct"){
+                dropCorrectAnswer = 1;
+                $('.answer-input .ui-draggable #correct').css('visibility', 'hidden');
+                $('.answer-input .ui-draggable #incorrect').css('visibility', 'visible');
+                //$('#droppable1 .draggable #correct').css('visibility', 'hidden');
+            }else if(currentID === "incorrect"){
+                dropCorrectAnswer = 0;
+                $('.answer-input .ui-draggable #correct').css('visibility', 'visible');
+                $('.answer-input .ui-draggable #incorrect').css('visibility', 'hidden');
+            }else
+                alert("There was an error evaluating the answer, please reload the site");
         }
     });
 };
