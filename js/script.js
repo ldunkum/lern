@@ -238,7 +238,7 @@ const draggabletings = function() {
     /* solution to only allow one element at a time in the box */
     /* https://stackoverflow.com/questions/23504884/only-allow-one-object-to-be-dropped-jquery */
     $( ".draggable" ).draggable({
-        //connectToSortable: "#droppable1",
+        connectToSortable: "#droppable1",
         helper: "clone",
         revert: "invalid"
     });
