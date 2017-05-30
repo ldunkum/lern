@@ -191,7 +191,7 @@ const goToGameEndScreen = function() {
                 if(this.language === 'de')
                     $('#game-end-message').html("Herzlichen Glückwunsch, du hast das Spiel mit " + score + " von " + numberOfQuestions*10 + " möglichen Punkten abgeschlossen.");
                 if(this.language === 'pt')
-                    $('#game-end-message').html("Congratulations, you finished the game with " + score + " out of " + numberOfQuestions*10 + " possible points.");
+                    $('#game-end-message').html("Parabéns acabaste o jogo com " + score + " em " + numberOfQuestions*10 + " pontos possiveis.");
             }else{
                 $('#game-end-message').html("C'mon, were you even trying? It's not that hard..");
             }
@@ -259,13 +259,13 @@ const draggabletings = function() {
 
             if(currentID === "correct"){
                 dropCorrectAnswer = 1;
-                $('.answer-input .ui-draggable #correct').css('visibility', 'hidden');
-                $('.answer-input .ui-draggable #incorrect').css('visibility', 'visible');
+                //$('.answer-input .ui-draggable #correct').css('visibility', 'hidden');
+                //$('.answer-input .ui-draggable #incorrect').css('visibility', 'visible');
                 //$('#droppable1 .draggable #correct').css('visibility', 'hidden');
             }else if(currentID === "incorrect"){
                 dropCorrectAnswer = 0;
-                $('.answer-input .ui-draggable #correct').css('visibility', 'visible');
-                $('.answer-input .ui-draggable #incorrect').css('visibility', 'hidden');
+                //$('.answer-input .ui-draggable #correct').css('visibility', 'visible');
+                //$('.answer-input .ui-draggable #incorrect').css('visibility', 'hidden');
             }else
                 alert("There was an error evaluating the answer, please reload the site");
         }
@@ -273,7 +273,7 @@ const draggabletings = function() {
 };
 
 const setIllustration = function() {
-    console.log("in setIllustraiont");
+    //console.log("in setIllustraiont");
     $('#droppable1').removeClass();
     $('#droppable1').addClass('ui-droppable question' + (currentQuestion - 1));
     $('head').append('<link rel="stylesheet" type="text/css" href="css/illustrations.css">')
