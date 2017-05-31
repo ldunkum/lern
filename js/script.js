@@ -192,6 +192,7 @@ const goToGameEndScreen = function() {
                     $('#game-end-message').html("Herzlichen Glückwunsch, du hast das Spiel mit " + score + " von " + numberOfQuestions*10 + " möglichen Punkten abgeschlossen.");
                 if(this.language === 'pt')
                     $('#game-end-message').html("Parabéns acabaste o jogo com " + score + " em " + numberOfQuestions*10 + " pontos possiveis.");
+            $('head').append('<link rel="stylesheet" type="text/css" href="css/fireworks.css">');
             }else{
                 $('#game-end-message').html("C'mon, were you even trying? It's not that hard..");
             }
@@ -276,6 +277,6 @@ const setIllustration = function() {
     //console.log("in setIllustraiont");
     $('#droppable1').removeClass();
     $('#droppable1').addClass('ui-droppable question' + (currentQuestion - 1));
-    $('head').append('<link rel="stylesheet" type="text/css" href="css/illustrations.css">')
+    $('head').append('<link rel="stylesheet" type="text/css" href="css/illustrations.css">');
 
 };
